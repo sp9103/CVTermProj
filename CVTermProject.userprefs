@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BodyControl.cs">
+    <Files>
+      <File FileName="Assets\BodyControl.cs" Line="80" Column="5" />
+      <File FileName="Assets\LeapConnector.cs" Line="19" Column="2" />
+      <File FileName="Assets\HandControl.cs" Line="49" Column="6" />
+      <File FileName="Assets\FingerControl.cs" Line="43" Column="30" />
+      <File FileName="Assets\LeapListener.cs" Line="52" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
