@@ -19,6 +19,11 @@ public:
 	virtual void onDeviceChange(const Controller&);
 	virtual void onServiceConnect(const Controller&);
 	virtual void onServiceDisconnect(const Controller&);
+
+	void GetData(cv::Point3f *el, cv::Point3f *wr);
 private:
+	CRITICAL_SECTION m_cs;
+
+	Leap::Vector mElbow, mWrist;
 };
 

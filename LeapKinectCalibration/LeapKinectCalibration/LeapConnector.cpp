@@ -2,6 +2,8 @@
 
 void LeapConnector::onInit(const Controller& controller) {
 	std::cout << "Initialized" << std::endl;
+
+	InitializeCriticalSection(&m_cs);
 }
 
 void LeapConnector::onConnect(const Controller& controller) {
@@ -76,6 +78,10 @@ void LeapConnector::onFrame(const Controller& controller) {
 
 		// Get the Arm bone
 		Arm arm = hand.arm();
+		EnterCriticalSection(&m_cs);
+		mElbow = arm.elbowPosition();
+		mWrist = arm.wristPosition();
+		LeaveCriticalSection(&m_cs);
 		/*std::cout << std::string(2, ' ') <<  "Arm direction: " << arm.direction()
 		<< " wrist position: " << arm.wristPosition()
 		<< " elbow position: " << arm.elbowPosition() << std::endl;*/
@@ -114,4 +120,21 @@ void LeapConnector::onFrame(const Controller& controller) {
 	if (!frame.hands().isEmpty()) {
 		std::cout << std::endl;
 	}
+}
+
+void LeapConnector::GetData(cv::Point3f *el, cv::Point3f *wr){
+	Vector tEl, tWr;
+
+	EnterCriticalSection(&m_cs);
+	tEl = mElbow;
+	tWr = mWrist;
+	LeaveCriticalSection(&m_cs);
+
+	el->x = tEl.x;
+	el->y = tEl.y;
+	el->z = tEl.z;
+
+	wr->x = tWr.x;
+	wr->y = tWr.y;
+	wr->z = tWr.z;
 }
