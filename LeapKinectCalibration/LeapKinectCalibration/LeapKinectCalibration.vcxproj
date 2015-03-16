@@ -82,12 +82,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CalibMatReader.cpp" />
+    <ClCompile Include="Calibration.cpp" />
     <ClCompile Include="KinectConnector.cpp" />
     <ClCompile Include="LeapConnector.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CalibMatReader.h" />
+    <ClInclude Include="Calibration.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="KinectConnector.h" />
     <ClInclude Include="LeapConnector.h" />
