@@ -72,9 +72,9 @@ public class BodyControl : MonoBehaviour {
 
 		//Convert float array to vec array
 		for (int i = 0; i < 13; i++) {
-			tbodyVec[i].x = body[i*3 + 0];
-			tbodyVec[i].y = body[i*3 + 1];
-			tbodyVec[i].z = body[i*3 + 2];
+			tbodyVec[i].x = body[i*3 + 0] / 10;
+			tbodyVec[i].y = body[i*3 + 1] / 10;
+			tbodyVec[i].z = -body[i*3 + 2] / 10;
 		}
 
 		//Debug.Log(tbodyVec[3]);
@@ -88,12 +88,12 @@ public class BodyControl : MonoBehaviour {
 		SetJoint (tbodyVec [12], tbodyVec [8], Bone [4]);
 		SetJoint (tbodyVec [8], tbodyVec [9], Bone [5]);
 		SetJoint (tbodyVec [9], tbodyVec [10], Bone [6]);
-		SetJoint (tbodyVec [10], tbodyVec [11], Bone [7]);
+		//SetJoint (tbodyVec [10], tbodyVec [11], Bone [7]);
 
 		//Left
 		SetJoint (tbodyVec [12], tbodyVec [4], Bone [8]);
 		SetJoint (tbodyVec [4], tbodyVec [5], Bone [9]);
 		SetJoint (tbodyVec [5], tbodyVec [6], Bone [10]);
-		SetJoint (tbodyVec [6], tbodyVec [7], Bone [11]);
+		//SetJoint (tbodyVec [6], tbodyVec [7], Bone [11]);
 	}
 }

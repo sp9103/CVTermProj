@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{3AA6FC2F-5509-A955-9CA5-9A0C03B08446}</ProjectGuid>
+	<ProjectGuid>{F16F50CD-7B0B-4006-CA83-F39398F4413E}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -100,10 +100,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LeapCSharp.NET3.5">
- <HintPath>D:/Projects/CVTermProject/Assets/Plugins/x86/LeapCSharp.NET3.5.dll</HintPath>
+ <HintPath>D:/Projects/CVTermProj/Assets/Plugins/x86/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
  <Reference Include="LeapCSharp.NET3.5">
- <HintPath>D:/Projects/CVTermProject/Assets/Plugins/x86_64/LeapCSharp.NET3.5.dll</HintPath>
+ <HintPath>D:/Projects/CVTermProj/Assets/Plugins/x86_64/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -138,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-vs.csproj">
-      <Project>{AD0684CC-6A56-63F9-9DFF-D5795571BC31}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
+      <Project>{A442FCC9-5E55-095E-3368-E96D50CF7633}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

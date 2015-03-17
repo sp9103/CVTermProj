@@ -5,6 +5,7 @@
 #include "CalibMatReader.h"
 
 #define DATASETCOUNT 400
+#define SAMPLINGCOUNT 40
 
 int CalcPrevDist(cv::Point3f p);			//이전 프레임과 현재 프레임에서의 거리계산
 void KinectDataSelect(SkeletonInfo src, cv::Point3f *elbow, cv::Point3f *wrist);
@@ -37,21 +38,28 @@ int main(){
 		kinect.GetColorImage(&rgb);
 		kinect.GetDepthImage(&depth);
 		kinect.GetSkeletonPos(&m_skel, &depth, 1);
-		//Data get to device - Leap
 
+		if(m_skel.Count != 1)
+			continue;
 		//Data select - Kinect
 		KinectDataSelect(m_skel, &KinectElbow, &KinectWrist);
 
+		//Data get to device - Leap
+		LeapMotion.GetData(&LeapElbow, &LeapWrist);
 
 		if(CalcPrevDist(LeapWrist) > 20){
 			//Data store
 			DataCount++;
+			printf("%d data stored\n", DataCount);
 			calib.DataStore(KinectWrist, LeapWrist);
 			calib.DataStore(KinectElbow, LeapElbow);
 		}
 
 		if(DataCount > DATASETCOUNT)
 			break;
+
+		cv::imshow("rgb", rgb);
+		cv::imshow("depth", depth);
 
 		waitKey(30);
 	}
@@ -66,9 +74,9 @@ int main(){
 	cv::destroyAllWindows();
 
 	//Solving Problem - RANSAC & Least Square
-	int LoopCount = calib.CalcLoopNUM(0.999, 0.8, DATASETCOUNT * 2);		//(wrist, elbow), palm
+	int LoopCount = calib.CalcLoopNUM(0.9, 0.8, SAMPLINGCOUNT);		//(wrist, elbow), palm
 	printf("RANSAC LOOP count : %d\n", LoopCount);
-	calib.InitParam(LoopCount, 20, DATASETCOUNT * 2);						//Threshold = 20mm (2cm)
+	calib.InitParam(LoopCount, 20, SAMPLINGCOUNT);						//Threshold = 20mm (2cm)
 	calib.CalcMatrix();
 	writer.WriteMat( "Calib.bin", calib.GetRTMatrix());
 

@@ -139,12 +139,12 @@ void KinectConnector::KinectDestroy(){
 		m_pKinectSensor->Close();
 	}
 
-	// done with face sources and readers
-	for (int i = 0; i < BODY_COUNT; i++)
-	{	
-		SafeRelease(m_pHDFaceFrameSources[i]);
-		SafeRelease(m_pHDFaceFrameReaders[i]);
-	}
+	//// done with face sources and readers
+	//for (int i = 0; i < BODY_COUNT; i++)
+	//{	
+	//	SafeRelease(m_pHDFaceFrameSources[i]);
+	//	SafeRelease(m_pHDFaceFrameReaders[i]);
+	//}
 
 	SafeRelease(m_pKinectSensor);
 	printf("Kinect Destroy Complete\n");
@@ -315,7 +315,7 @@ HRESULT KinectConnector::GetSkeletonPos(SkeletonInfo* m_SkeletonInfo, Mat *src, 
 			bHaveBodyData = true;
 			ProcessSkel(m_SkeletonInfo, BODY_COUNT, ppBodies, src, mode);	
 			////process & draw body
-			BasisCalibration(m_SkeletonInfo);		
+			//BasisCalibration(m_SkeletonInfo);		
 		}
 	}
 

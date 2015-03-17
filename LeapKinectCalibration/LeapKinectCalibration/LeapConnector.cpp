@@ -53,12 +53,12 @@ void LeapConnector::onServiceDisconnect(const Controller& controller) {
 void LeapConnector::onFrame(const Controller& controller) {
 	// Get the most recent frame and report some basic information
 	const Frame frame = controller.frame();
-	std::cout << "Frame id: " << frame.id()
+	/*std::cout << "Frame id: " << frame.id()
 		<< ", timestamp: " << frame.timestamp()
 		<< ", hands: " << frame.hands().count()
 		<< ", fingers: " << frame.fingers().count()
 		<< ", tools: " << frame.tools().count()
-		<< ", gestures: " << frame.gestures().count() << std::endl;
+		<< ", gestures: " << frame.gestures().count() << std::endl;*/
 
 	HandList hands = frame.hands();
 	for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
@@ -118,7 +118,7 @@ void LeapConnector::onFrame(const Controller& controller) {
 	//}
 
 	if (!frame.hands().isEmpty()) {
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	}
 }
 

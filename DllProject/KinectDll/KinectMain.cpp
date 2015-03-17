@@ -92,6 +92,7 @@ extern "C"{
 			}
 
 			memcpy(&m_Body.InfoBody[0], &m_Body.InfoBody[NearestIdx], sizeof(BodyInfo)); 
+			m_Body.Count;
 		}
 
 		//Convert Struct to Array

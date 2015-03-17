@@ -138,17 +138,17 @@ void Calibration::CalcMatrix(){
 		int InlierCount = CalcInlierCount(tempM, m_Threshold, &averError);
 
 		if(NumInlier <= InlierCount){
-			if(averError*100.f < bestError){
+			if(averError < bestError){
 				NumInlier = InlierCount;
 				tempM.copyTo(RTMat);
-				bestError = averError*100.f;
+				bestError = averError;
 			}
 		}
 
 		tLoopCount++;
 		printf("\n[%d] Loop complete!\n", tLoopCount);
 		printf("- Inlier count : %d\n", InlierCount);
-		printf("- Average Err : %fcm\n\n", averError*100.f);
+		printf("- Average Err : %fcm\n\n", averError/10.f);
 		printMat(tempM);
 	}
 

@@ -21,6 +21,7 @@ int CalibMatReader::ReadMat(char *filepath, cv::Mat *CalibMat){
 
 	fp = fopen(filepath, "rb");
 	if(fp == NULL){
+		MessageBox(NULL, L"Calibration Matrix open fail", L"Fail", MB_OK);
 		for(int i = 0; i < 4; i++){
 			for(int j = 0; j < 4; j++){
 				if(i == j)

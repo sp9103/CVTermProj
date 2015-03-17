@@ -20,7 +20,7 @@ KinectConnector::KinectConnector(void)
 
 	//Identity Matrix
 	RTMat.create(4,4, CV_32FC1);
-	reader.ReadMat("CalibMat.bin", &RTMat);
+	reader.ReadMat("Calib.bin", &RTMat);
 }
 
 KinectConnector::~KinectConnector(void)
