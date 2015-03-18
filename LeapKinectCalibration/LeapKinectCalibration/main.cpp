@@ -39,13 +39,12 @@ int main(){
 		kinect.GetDepthImage(&depth);
 		kinect.GetSkeletonPos(&m_skel, &depth, 1);
 
-		if(m_skel.Count != 1)
+
+		//Data get to device - Leap
+		if(m_skel.Count != 1 || !LeapMotion.GetData(&LeapElbow, &LeapWrist))
 			continue;
 		//Data select - Kinect
 		KinectDataSelect(m_skel, &KinectElbow, &KinectWrist);
-
-		//Data get to device - Leap
-		LeapMotion.GetData(&LeapElbow, &LeapWrist);
 
 		if(CalcPrevDist(LeapWrist) > 20){
 			//Data store

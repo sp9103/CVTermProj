@@ -20,10 +20,11 @@ public:
 	virtual void onServiceConnect(const Controller&);
 	virtual void onServiceDisconnect(const Controller&);
 
-	void GetData(cv::Point3f *el, cv::Point3f *wr);
+	bool GetData(cv::Point3f *el, cv::Point3f *wr);
 private:
 	CRITICAL_SECTION m_cs;
 
 	Leap::Vector mElbow, mWrist;
+	bool isHand;
 };
 

@@ -4,6 +4,8 @@ void LeapConnector::onInit(const Controller& controller) {
 	std::cout << "Initialized" << std::endl;
 
 	InitializeCriticalSection(&m_cs);
+
+	isHand = false;
 }
 
 void LeapConnector::onConnect(const Controller& controller) {
@@ -59,6 +61,13 @@ void LeapConnector::onFrame(const Controller& controller) {
 		<< ", fingers: " << frame.fingers().count()
 		<< ", tools: " << frame.tools().count()
 		<< ", gestures: " << frame.gestures().count() << std::endl;*/
+
+	if (!frame.hands().isEmpty()) {
+		//std::cout << std::endl;
+		isHand = true;
+	}
+	else
+		isHand = false;
 
 	HandList hands = frame.hands();
 	for (HandList::const_iterator hl = hands.begin(); hl != hands.end(); ++hl) {
@@ -116,13 +125,9 @@ void LeapConnector::onFrame(const Controller& controller) {
 	//		<< ", position: " << tool.tipPosition()
 	//		<< ", direction: " << tool.direction() << std::endl;
 	//}
-
-	if (!frame.hands().isEmpty()) {
-		//std::cout << std::endl;
-	}
 }
 
-void LeapConnector::GetData(cv::Point3f *el, cv::Point3f *wr){
+bool LeapConnector::GetData(cv::Point3f *el, cv::Point3f *wr){
 	Vector tEl, tWr;
 
 	EnterCriticalSection(&m_cs);
@@ -137,4 +142,6 @@ void LeapConnector::GetData(cv::Point3f *el, cv::Point3f *wr){
 	wr->x = tWr.x;
 	wr->y = tWr.y;
 	wr->z = tWr.z;
+
+	return isHand;
 }
